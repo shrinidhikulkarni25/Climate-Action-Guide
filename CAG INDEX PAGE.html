@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Action Guide | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: url('background-placeholder.jpg') no-repeat center center/cover;
+            color: white;
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+        }
+
+        body.dark {
+            background: #0b2e1c;
+            color: #d6ffd6;
+        }
+
+        nav {
+            width: 100%;
+            background: rgba(0,50,0,0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 15px 0;
+            z-index: 100;
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom: 2px solid #6cff72;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            background: #6cff72;
+            color: #003300;
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,40,10,0.45);
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-top: 120px;
+            z-index: 3;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 55px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            animation: fadeInDown 1.2s ease;
+        }
+
+        #quote {
+            font-size: 22px;
+            margin-top: 15px;
+            height: 30px;
+        }
+
+        .btn {
+            background: #6cff72;
+            padding: 18px 45px;
+            border-radius: 35px;
+            border: none;
+            font-size: 22px;
+            font-weight: bold;
+            color: #003300;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: 0.3s ease;
+            z-index: 5;
+        }
+        .btn:hover {
+            background: #9aff9f;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #b0ffbd;
+        }
+
+
+        .mini-nav {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .mini-card {
+            background: rgba(0,0,0,0.55);
+            border: 2px solid #6cff72;
+            padding: 25px;
+            border-radius: 15px;
+            width: 260px;
+            text-align: center;
+            transition: 0.3s;
+            backdrop-filter: blur(3px);
+            color: white;
+        }
+
+        body.dark .mini-card {
+            background: rgba(255,255,255,0.15);
+            color: #d6ffd6;
+        }
+
+        .mini-card:hover {
+            transform: translateY(-10px);
+            background: rgba(0,0,0,0.75);
+        }
+
+        .mini-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .extra-info {
+            margin-top: 10px;
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: #0a4f20;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 12;
+        }
+        .toggle-btn:hover {
+            background: #146c30;
+            transform: scale(1.1);
+        }
+
+        #learn-more-section {
+            background: #0a3f1a;
+            padding: 80px 50px;
+            border-radius: 0 0 30px 30px;
+            margin-top: 100vh;
+        }
+
+        #learn-more-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        #learn-more-section p {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background: #15a34a;
+            padding: 5px 15px;
+            border-radius: 8px;
+        }
+
+        @keyframes fadeInDown { from {opacity:0; transform:translateY(-40px);} to {opacity:1; transform:translateY(0);} }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="CAG INDEX PAGE.html">Home</a>
+    <a href="CAG SDG PAGE.html">SDG</a>
+    <a href="CAG ABOUT US PAGE.html">About Us</a>
+    <a href="CAG TIPS PAGE.html">Tips</a>
+    <a href="CAG QUIZ PAGE.html">Quiz</a>
+    <a href="CAG WASTE MANAGEMENT PAGE.html">Waste Mgmt</a>
+</nav>
+
+<div class="overlay"></div>
+
+<button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+
+<header>
+    <h1>🌍 CLIMATE ACTION GUIDE</h1>
+    <div id="quote"></div>
+    <button class="btn" onclick="location.href='CAG SDG PAGE.html'">Explore SDG ➜</button>
+</header>
+
+<div class="mini-nav">
+    <div class="mini-card">
+        <div class="mini-icon">🌱</div>
+        <h3>Learn</h3>
+        <p>Understand climate change and its global impact.</p>
+        <p class="extra-info">Climate science explains how human activities affect the planet. Learning the basics helps you take meaningful action.</p>
+    </div>
+
+    <div class="mini-card">
+        <div class="mini-icon">⚡</div>
+        <h3>Act</h3>
+        <p>Discover tips to reduce your carbon footprint.</p>
+        <p class="extra-info">Simple actions like saving electricity, using eco-friendly transport, and conserving water can create real change.</p>
+    </div>
+
+    <div class="mini-card">
+        <div class="mini-icon">🌎</div>
+        <h3>Protect</h3>
+        <p>Safeguard the planet for future generations.</p>
+        <p class="extra-info">Protect ecosystems by reducing waste, supporting sustainability, and encouraging environmental awareness.</p>
+    </div>
+</div>
+
+<section id="learn-more-section">
+    <h2>Why Climate Action Matters 🌍</h2>
+    <p>Climate change is not a distant problem — it is happening <b>right now</b>. Rising temperatures, extreme weather, and pollution affect our health, communities, and future generations.</p>
+    <p>Together, we can make a difference. Small actions like reducing waste, saving energy, and choosing sustainable habits help protect the environment.</p>
+    <p>This guide provides tools to take action and become a <span class="highlight">guardian of the planet</span>. 🌱🌎</p>
+</section>
+
+<script>
+
+    const quote = "“The Earth is what we all have in common.” — Wendell Berry";
+    let i = 0;
+    function typeText() {
+        if(i < quote.length){
+            document.getElementById("quote").innerHTML += quote.charAt(i);
+            i++;
+            setTimeout(typeText, 60);
+        }
+    }
+    typeText();
+
+    function toggleMode(){
+        document.body.classList.toggle("dark");
+    }
+
+</script>
+
+</body>
+</html>
