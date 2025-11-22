@@ -1,0 +1,427 @@
+CAG WASTE MANAGEMENT PAGE.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Action Guide | Waste Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    color:white;
+    transition:all 0.5s ease;
+    background:#0a3f1a;
+}
+body.dark{
+    background:#1b3a20;
+    color:#d6ffd6;
+}
+
+nav{
+    width:100%;
+    background:rgba(0,50,0,0.7);
+    position:fixed;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:15px 0;
+    z-index:100;
+    font-weight:bold;
+    font-size:18px;
+    border-bottom:2px solid #6cff72;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:8px 15px;
+    border-radius:12px;
+    transition:0.3s;
+}
+nav a:hover{
+    background:#6cff72;
+    color:#003300;
+    transform:scale(1.1);
+}
+body.dark nav a:hover{
+    background:#9aff9f;
+    color:#003300;
+}
+
+.header{
+    text-align:center;
+    padding:50px 20px 20px 20px;
+    position:relative;
+    z-index:2;
+}
+.header h1{
+    font-size:50px;
+    color:#6cff72;
+    animation:fadeInDown 1.5s ease;
+}
+body.dark .header h1{
+    color:#9aff9f;
+}
+
+.toggle-btn{
+    position:absolute;
+    top:20px;
+    right:25px;
+    background:#0a4f20;
+    border:none;
+    padding:12px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+    z-index:12;
+}
+.toggle-btn:hover{
+    background:#146c30;
+    transform:scale(1.1);
+}
+body.dark .toggle-btn{
+    background:#2e7d32;
+}
+.back-btn{
+    display:block;
+    margin:0 auto 30px auto;
+    background:#6cff72;
+    color:#003300;
+    padding:15px 30px;
+    font-size:20px;
+    font-weight:bold;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.back-btn:hover{
+    background:#9aff9f;
+    transform:scale(1.1);
+    box-shadow:0 0 20px #b0ffbd;
+}
+body.dark .back-btn{
+    background:#15a34a;
+    color:#e0ffe0;
+}
+
+.bg-video{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+    opacity:0.4;
+}
+
+.content{
+    max-width:1000px;
+    margin:30px auto;
+    background:rgba(0,50,0,0.6);
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
+    animation:fadeInUp 1.5s ease;
+}
+.content h2{
+    color:#6cff72;
+    margin-bottom:15px;
+}
+body.dark .content h2{
+    color:#9aff9f;
+}
+.content p{
+    line-height:1.8;
+    margin-bottom:15px;
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+    margin-bottom:30px;
+}
+.card{
+    flex:1 1 200px;
+    background:rgba(108,255,114,0.3);
+    border-radius:20px;
+    padding:20px;
+    cursor:pointer;
+    transition:0.3s;
+    text-align:center;
+    position:relative;
+}
+.card:hover{
+    background:#6cff72;
+    color:#003300;
+    transform:scale(1.05);
+}
+.card .tip{
+    display:none;
+    margin-top:10px;
+    font-size:16px;
+    color:#003300;
+}
+.card:hover .tip{
+    display:block;
+}
+body.dark .card{
+    background:rgba(108,255,114,0.15);
+}
+body.dark .card:hover{
+    background:#9aff9f;
+    color:#003300;
+}
+
+.counters{
+    display:flex;
+    justify-content:space-around;
+    margin:30px 0;
+    flex-wrap:wrap;
+    gap:20px;
+}
+.counter{
+    background:rgba(108,255,114,0.3);
+    padding:20px;
+    border-radius:20px;
+    text-align:center;
+    font-size:22px;
+    flex:1 1 200px;
+}
+body.dark .counter{
+    background:rgba(108,255,114,0.15);
+}
+
+.slideshow-container{
+    position:relative;
+    max-width:100%;
+    margin:30px auto;
+    border-radius:20px;
+    overflow:hidden;
+}
+.slide{
+    display:none;
+    width:100%;
+    height:300px;
+    background:rgba(108,255,114,0.3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#003300;
+}
+.prev, .next{
+    cursor:pointer;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    padding:12px;
+    border-radius:50%;
+    background:#6cff72;
+    color:#003300;
+    font-weight:bold;
+    transition:0.3s;
+}
+.prev:hover, .next:hover{
+    background:#9aff9f;
+}
+.prev{left:10px;}
+.next{right:10px;}
+
+.quiz-mini{
+    background:rgba(108,255,114,0.3);
+    padding:20px;
+    border-radius:20px;
+    text-align:center;
+    margin-top:30px;
+}
+.quiz-mini label{
+    display:block;
+    margin:10px 0;
+    cursor:pointer;
+}
+.quiz-mini input[type="radio"]{
+    margin-right:10px;
+}
+.submit-mini{
+    margin-top:15px;
+    padding:10px 20px;
+    font-weight:bold;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    background:#6cff72;
+    color:#003300;
+    transition:0.3s;
+}
+.submit-mini:hover{
+    background:#9aff9f;
+    transform:scale(1.05);
+}
+
+.tip-box{
+    background:rgba(108,255,114,0.3);
+    padding:20px;
+    border-radius:20px;
+    margin-top:20px;
+    text-align:center;
+    font-size:18px;
+}
+body.dark .tip-box{
+    background:rgba(108,255,114,0.15);
+}
+
+.leaf{
+    position:fixed;
+    top:-50px;
+    animation:fall linear infinite;
+    opacity:0.7;
+    z-index:0;
+}
+
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fall{0%{transform:translateX(0) rotate(0);}100%{transform:translateY(110vh) translateX(-20vw) rotate(360deg);}}
+</style>
+</head>
+<body>
+
+
+<nav>
+<a href="index.html">Home</a>
+<a href="CAG SDG PAGE.html">SDG</a>
+<a href="CAG ABOUT US PAGE.html">About Us</a>
+<a href="CAG TIPS PAGE.html">Tips</a>
+<a href="CAG QUIZ PAGE.html">Quiz</a>
+<a href="CAG WASTE MANAGEMENT PAGE.html">Waste Mgmt</a>
+</nav>
+
+<button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+
+<video class="bg-video" autoplay muted loop>
+    <source src="waste-bg.mp4" type="video/mp4">
+</video>
+
+<div class="header"><h1>♻️ Waste Management</h1></div>
+<button class="back-btn" onclick="location.href='index.html'">🏠 Back to Home</button>
+
+<div class="content">
+<h2>Interactive Waste Sorting</h2>
+<div class="cards">
+<div class="card">
+Plastic
+<div class="tip">Place clean plastic bottles, containers, and packaging in recycling bins.</div>
+</div>
+<div class="card">
+Paper
+<div class="tip">Recycle newspapers, magazines, and cardboard. Avoid wet or greasy paper.</div>
+</div>
+<div class="card">
+Metal
+<div class="tip">Aluminum cans, tin containers can be recycled after rinsing.</div>
+</div>
+<div class="card">
+Organic
+<div class="tip">Compost kitchen waste, garden clippings, and leaves.</div>
+</div>
+<div class="card">
+E-Waste
+<div class="tip">Dispose electronics at certified e-waste centers only.</div>
+</div>
+</div>
+
+<h2>Impact Counters</h2>
+<div class="counters">
+<div class="counter" data-target="1200">Waste Recycled: 0 Tons</div>
+<div class="counter" data-target="350">Trees Saved: 0</div>
+<div class="counter" data-target="5000">Energy Saved: 0 kWh</div>
+</div>
+
+<h2>Mini Quiz</h2>
+<div class="quiz-mini">
+<p>Which bin should you throw a plastic bottle in?</p>
+<label><input type="radio" name="mini" value="wrong">Organic</label>
+<label><input type="radio" name="mini" value="correct">Plastic/Recycle Bin</label>
+<label><input type="radio" name="mini" value="wrong">Metal</label>
+<button class="submit-mini" onclick="checkMiniQuiz()">Submit</button>
+<div id="miniResult"></div>
+</div>
+
+<h2>Seasonal Tip 🍂</h2>
+<div class="tip-box">
+Autumn Tip: Compost fallen leaves and reduce garden waste by turning it into natural fertilizer.
+</div>
+
+<h2>Call to Action</h2>
+<div class="tip-box">
+<button onclick="window.open('https://www.google.com/search?q=recycling+center+near+me','_blank')">Find Local Recycling Center ♻️</button>
+<button onclick="window.open('https://www.epa.gov/recycle/composting-home','_blank')">Learn Home Composting 🌱</button>
+</div>
+</div>
+
+<script>
+
+for(let i=0;i<12;i++){
+    let leaf=document.createElement("div");
+    leaf.classList.add("leaf");
+    leaf.innerHTML="🍃";
+    leaf.style.left=Math.random()*100+"vw";
+    leaf.style.animationDuration=(5+Math.random()*5)+"s";
+    leaf.style.fontSize=(25+Math.random()*20)+"px";
+    document.body.appendChild(leaf);
+}
+
+function toggleMode(){document.body.classList.toggle("dark");}
+
+let slideIndex=1;
+showSlides(slideIndex);
+function plusSlides(n){showSlides(slideIndex+=n);}
+function showSlides(n){
+    let slides=document.getElementsByClassName("slide");
+    if(n>slides.length){slideIndex=1;}
+    if(n<1){slideIndex=slides.length;}
+    for(let s of slides){s.style.display="none";}
+    slides[slideIndex-1].style.display="flex";
+}
+
+const counters=document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+    const updateCount=()=>{
+        const target=+counter.getAttribute('data-target');
+        const count=+counter.innerText.replace(/\D/g,'');
+        const increment=target/200;
+        if(count<target){
+            counter.innerText=counter.innerText.split(':')[0]+': '+Math.ceil(count+increment)+(counter.innerText.includes('kWh')?' kWh':'');
+            requestAnimationFrame(updateCount);
+        }else{
+            counter.innerText=counter.innerText.split(':')[0]+': '+target+(counter.innerText.includes('kWh')?' kWh':'');
+        }
+    };
+    updateCount();
+});
+
+
+function checkMiniQuiz(){
+    const options=document.getElementsByName('mini');
+    let correct=false;
+    for(let opt of options){
+        if(opt.checked){
+            if(opt.value==='correct'){correct=true;}
+        }
+    }
+    const res=document.getElementById('miniResult');
+    if(correct){res.innerHTML='✅ Correct! 🎉';}
+    else{res.innerHTML='❌ Incorrect, try again! 😔';}
+}
+</script>
+</body>
+</html>

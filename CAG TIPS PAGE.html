@@ -1,0 +1,310 @@
+CAG TIPS PAGE.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Action Guide | Tips</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    background:#0a3f1a;
+    color:white;
+    transition:all 0.5s ease;
+}
+body.dark{
+    background:#1b3a20;
+    color:#d6ffd6;
+}
+
+nav{
+    width:100%;
+    background:rgba(0,50,0,0.7);
+    position:fixed;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:15px 0;
+    z-index:100;
+    font-weight:bold;
+    font-size:18px;
+    border-bottom:2px solid #6cff72;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:8px 15px;
+    border-radius:12px;
+    transition:0.3s;
+}
+nav a:hover{
+    background:#6cff72;
+    color:#003300;
+    transform:scale(1.1);
+}
+body.dark nav a:hover{
+    background:#9aff9f;
+    color:#003300;
+}
+
+.header{
+    text-align:center;
+    padding:50px 20px 20px 20px;
+    position:relative;
+    z-index:2;
+}
+.header h1{
+    font-size:50px;
+    color:#6cff72;
+    animation:fadeInDown 1.5s ease;
+}
+body.dark .header h1{
+    color:#9aff9f;
+}
+
+.toggle-btn{
+    position:absolute;
+    top:20px;
+    right:25px;
+    background:#0a4f20;
+    border:none;
+    padding:12px 18px;
+    border-radius:25px;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+    z-index:12;
+}
+.toggle-btn:hover{
+    background:#146c30;
+    transform:scale(1.1);
+}
+body.dark .toggle-btn{
+    background:#2e7d32;
+}
+.back-btn{
+    display:block;
+    margin:0 auto 30px auto;
+    background:#6cff72;
+    color:#003300;
+    padding:15px 30px;
+    font-size:20px;
+    font-weight:bold;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.back-btn:hover{
+    background:#9aff9f;
+    transform:scale(1.1);
+    box-shadow:0 0 20px #b0ffbd;
+}
+body.dark .back-btn{
+    background:#15a34a;
+    color:#e0ffe0;
+}
+
+.tabs{
+    text-align:center;
+    margin:20px 0;
+}
+.tabs button{
+    padding:10px 20px;
+    margin:0 8px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+    background:#225522;
+    color:#c8ffc8;
+    transition:0.3s;
+}
+.tabs button:hover, .tabs button.active{
+    background:#6cff72;
+    color:#003300;
+}
+body.dark .tabs button{
+    background:#0d2e0d;
+    color:#b0ffc8;
+}
+body.dark .tabs button:hover, body.dark .tabs button.active{
+    background:#9aff9f;
+    color:#003300;
+}
+
+.tips-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin:20px 30px;
+    gap:25px;
+}
+.tip-card{
+    background:rgba(255,255,255,0.1);
+    border-radius:20px;
+    padding:25px;
+    width:250px;
+    text-align:center;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+.tip-card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,0.25);
+}
+.tip-card i{
+    font-size:50px;
+    margin-bottom:15px;
+    display:inline-block;
+}
+.leaf-inside{
+    position:absolute;
+    font-size:20px;
+    animation:moveLeaf 3s linear infinite;
+    opacity:0.7;
+}
+@keyframes moveLeaf{
+    0%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(8px) rotate(10deg);}
+    100%{transform:translateY(0) rotate(0deg);}
+}
+.tip-card h3{
+    margin-bottom:10px;
+}
+.tip-card p{
+    font-size:17px;
+    line-height:1.6;
+}
+
+.video-placeholder{
+    width:90%;
+    height:200px;
+    background:#225522;
+    border-radius:15px;
+    margin:40px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#c8ffc8;
+    font-weight:bold;
+}
+.audio-placeholder{
+    width:90%;
+    margin:20px auto;
+}
+
+.cta{
+    text-align:center;
+    margin:50px 0;
+}
+.cta button{
+    background:#6cff72;
+    padding:18px 40px;
+    font-size:22px;
+    border:none;
+    border-radius:35px;
+    cursor:pointer;
+    color:#003300;
+    font-weight:bold;
+    transition:0.3s;
+}
+.cta button:hover{
+    background:#9aff9f;
+    transform:scale(1.1);
+    box-shadow:0 0 20px #b0ffbd;
+}
+body.dark .cta button{
+    background:#15a34a;
+    color:#e0ffe0;
+}
+
+.leaf{
+    position:fixed;
+    top:-50px;
+    animation:fall linear infinite;
+    opacity:0.7;
+    z-index:0;
+}
+
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-40px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fall{0%{transform:translateX(0) rotate(0);}100%{transform:translateY(110vh) translateX(-20vw) rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="CAG SDG PAGE.html">SDG</a>
+<a href="CAG ABOUT US PAGE.html">About Us</a>
+<a href="CAG TIPS PAGE.html">Tips</a>
+<a href="CAG QUIZ PAGE.html">Quiz</a>
+<a href="CAG WASTE MANAGEMENT PAGE.html">Waste Mgmt</a>
+</nav>
+
+<div class="overlay"></div>
+<button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+
+<div class="header"><h1>💡 Climate Action Tips</h1></div>
+<button class="back-btn" onclick="location.href='index.html'">🏠 Back to Home</button>
+
+<div class="tabs">
+<button class="tab-btn active" onclick="filterTips('all')">All</button>
+<button class="tab-btn" onclick="filterTips('energy')">⚡ Energy</button>
+<button class="tab-btn" onclick="filterTips('green')">🌱 Green Living</button>
+<button class="tab-btn" onclick="filterTips('water')">💧 Water</button>
+<button class="tab-btn" onclick="filterTips('waste')">🍃 Waste</button>
+<button class="tab-btn" onclick="filterTips('transport')">🚴‍♂️ Transport</button>
+</div>
+
+<div class="tips-container">
+<div class="tip-card" data-category="green" title="Native trees absorb more CO2 🌳"><i>🌱</i><div class="leaf-inside" style="top:10px;left:20px;">🍃</div><h3>Plant Trees</h3><p>Plant native trees in your area to absorb CO2 and create green spaces.</p></div>
+
+<div class="tip-card" data-category="energy" title="Switch to LED bulbs and unplug devices"><i>⚡</i><div class="leaf-inside" style="top:15px;right:15px;">🍃</div><h3>Save Energy</h3><p>Use energy-efficient appliances and unplug devices when not in use.</p></div>
+
+<div class="tip-card" data-category="transport" title="Walk, cycle, or use public transport 🚶‍♂️"><i>🚴‍♂️</i><div class="leaf-inside" style="bottom:10px;left:10px;">🍃</div><h3>Eco Transport</h3><p>Reduce your carbon footprint by choosing sustainable transport.</p></div>
+
+<div class="tip-card" data-category="water" title="Fix leaks and collect rainwater"><i>💧</i><div class="leaf-inside" style="top:10px;right:25px;">🍃</div><h3>Save Water</h3><p>Fix leaks, take shorter showers, and reuse rainwater when possible.</p></div>
+
+<div class="tip-card" data-category="waste" title="Recycle, compost, and reduce plastics"><i>🍃</i><div class="leaf-inside" style="bottom:5px;right:20px;">🍃</div><h3>Reduce Waste</h3><p>Recycle, compost organic waste, and avoid single-use plastics.</p></div>
+
+<div class="tip-card" data-category="green" title="Buy local, sustainable products"><i>🛍️</i><div class="leaf-inside" style="top:5px;left:15px;">🍃</div><h3>Eco Shopping</h3><p>Choose sustainable products and support local businesses.</p></div>
+</div>
+
+
+<div class="cta">
+<button onclick="alert('Thank you for taking the pledge! 🌱')">🌱 I Pledge to Adopt 3 New Habits</button>
+<button onclick="alert('Download Tip Sheet PDF')">📄 Download Tips Sheet</button>
+</div>
+
+<script>
+
+for(let i=0;i<12;i++){
+    let leaf=document.createElement("div");
+    leaf.classList.add("leaf");
+    leaf.innerHTML="🍃";
+    leaf.style.left=Math.random()*100+"vw";
+    leaf.style.animationDuration=(5+Math.random()*5)+"s";
+    leaf.style.fontSize=(25+Math.random()*20)+"px";
+    document.body.appendChild(leaf);
+}
+
+function toggleMode(){document.body.classList.toggle("dark");}
+
+function filterTips(cat){
+    let tips=document.querySelectorAll(".tip-card");
+    document.querySelectorAll(".tab-btn").forEach(btn=>btn.classList.remove("active"));
+    event.target.classList.add("active");
+    tips.forEach(t=>{
+        if(cat==='all' || t.dataset.category===cat){t.style.display='block';}else{t.style.display='none';}
+    });
+}
+</script>
+</body>
+</html>
